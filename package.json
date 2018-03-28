@@ -1,0 +1,19 @@
+{
+  "name": "@origami-network/cli-step-publish-s3",
+  "version": "0.0.0",
+  "description": "Module that publish the folder to AWS S3 bucket.",
+  "main": "lib/get-objects.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/origami-network/node-cli-step-publish-s3.git"
+  },
+  "author": "Bartlomiej Dubas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/origami-network/node-cli-step-publish-s3/issues"
+  },
+  "homepage": "https://github.com/origami-network/node-cli-step-publish-s3#readme"
+}
