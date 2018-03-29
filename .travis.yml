@@ -1,0 +1,14 @@
+language: node_js
+
+node_js:
+  - stable
+
+install:
+  - npm install
+
+script:
+  - npm run test:cover
+#  - npm run spec
+
+after_script:
+  - npm run test:cover:publish
