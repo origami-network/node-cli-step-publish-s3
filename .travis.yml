@@ -7,7 +7,7 @@ node_js:
 services:
   - docker
 
-env:
+global:
   - SPEC_AWS_ACCESS_KEY=AwsAccessKey
   - SPEC_AWS_SECRET_KEY=AwsSecretKey
   - SPEC_S3_REGION=us-east-1
