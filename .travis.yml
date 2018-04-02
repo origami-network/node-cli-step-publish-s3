@@ -7,6 +7,7 @@ node_js:
 services:
   - docker
 
+# TBD: Is it works?
 global:
   - SPEC_AWS_ACCESS_KEY=AwsAccessKey
   - SPEC_AWS_SECRET_KEY=AwsSecretKey
@@ -24,7 +25,6 @@ install:
 
 script:
   - npm run test:cover
-  - echo ${SPEC_AWS_ACCESS_KEY}
   - |
     npm \
     --aws-access-key="${SPEC_AWS_ACCESS_KEY}" \
@@ -36,3 +36,6 @@ script:
 
 after_script:
   - npm run test:cover:publish
+
+after_failure:
+  - docker logs s3
