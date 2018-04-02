@@ -24,7 +24,7 @@ before_install:
     -p ${SPEC_S3_ENDPOINT}:9000 \
     -e "MINIO_ACCESS_KEY=${SPEC_AWS_ACCESS_KEY}" \
     -e "MINIO_SECRET_KEY=${SPEC_AWS_SECRET_KEY}" \
-    -e "MINIO_REGION=${SPEC_S3_REGION}"
+    -e "MINIO_REGION=${SPEC_S3_REGION}" \
     -d minio/minio:RELEASE.2018-03-30T00-38-44Z \
     server /data
 
