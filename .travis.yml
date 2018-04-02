@@ -7,7 +7,6 @@ node_js:
 services:
   - docker
 
-# TBD: Is it works?
 env:
   - |
     SPEC_AWS_ACCESS_KEY=AwsAccessKey \
@@ -17,10 +16,17 @@ env:
     SPEC_S3_ENDPOINT=127.0.0.1:9000
 
 before_install:
-  - echo "aaaa ${SPEC_S3_ENDPOINT}"
   - docker pull minio/minio:RELEASE.2018-03-30T00-38-44Z
   # TODO: Add public bucket policy from specs/minio/bucket/public/policy.json
-  - docker run --name s3 -p ${SPEC_S3_ENDPOINT}:9000 -d minio/minio:RELEASE.2018-03-30T00-38-44Z server /data
+  - |
+    docker run \
+    --name s3 \
+    -p ${SPEC_S3_ENDPOINT}:9000 \
+    -e "MINIO_ACCESS_KEY=${SPEC_AWS_ACCESS_KEY}" \
+    -e "MINIO_SECRET_KEY=${SPEC_AWS_SECRET_KEY}" \
+    -e "MINIO_REGION=${SPEC_S3_REGION}"
+    -d minio/minio:RELEASE.2018-03-30T00-38-44Z \
+    server /data
 
 install:
   - npm install
@@ -38,6 +44,4 @@ script:
 
 after_script:
   - npm run test:cover:publish
-
-after_failure:
   - docker logs s3
