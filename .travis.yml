@@ -24,12 +24,13 @@ install:
 
 script:
   - npm run test:cover
+  - echo ${SPEC_AWS_ACCESS_KEY}
   - |
     npm \
     --aws-access-key="${SPEC_AWS_ACCESS_KEY}" \
     --aws-secret-key="${SPEC_AWS_SECRET_KEY}" \
     --s3-region="${SPEC_S3_REGION}" \
-    -s3-bucket="${SPEC_S3_BUCKET}" \
+    --s3-bucket="${SPEC_S3_BUCKET}" \
     --s3-endpoint="http://${SPEC_S3_ENDPOINT}" \
     run spec
 
