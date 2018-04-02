@@ -10,7 +10,7 @@
     "test": "mocha --reporter spec lib/**/**.spec.js",
     "test:cover": "nyc --report-dir dist/test -r lcov -r text npm run test",
     "test:cover:publish": "cat dist/test/lcov.info | coveralls",
-    "spec": "mocha --reporter spec specs/**/**.spec.js"
+    "spec": "mocha --reporter spec -t 30000 specs/**/**.spec.js"
   },
   "repository": {
     "type": "git",

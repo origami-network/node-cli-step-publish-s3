@@ -19,12 +19,13 @@ program
 [
     { key: 'awsAccessKey', name: "AWS access key" },
     { key: 'awsSecretKey', name: "AWS secret key" },
-    { key: 's3Region', name: "S3 bucket region" },
-    { key: 's3Bucket', name: "S3 bucket name" }
+    { key: 's3Region', name: "S3 region" },
+    { key: 's3Bucket', name: "S3 bucket" }
 ].forEach(parameter => {
     if (!program[parameter.key]) {
         console.error(parameter.name + " is mandatory");
-        program.help();
+        program.outputHelp();
+        process.exit(1);
     }
 });
 
@@ -54,6 +55,16 @@ const prefix = [
     .filter(i => i)
     .join('/')
 const sourceDir = path.join(sourcePackageDir, program.source);
+
+const message = [
+    'Publish',
+    '`' + sourceDir + '`',
+    'to',
+    '`arn:aws:s3:::' + s3Options.params.Bucket + '/' + prefix + '`',
+    'in region',
+    '`' + s3Options.region + '`',
+].join(' ')
+console.log(message + ':');
 require('.')(sourceDir, error => {
     console.error(error);
     process.exit(1);
@@ -73,7 +84,7 @@ require('.')(sourceDir, error => {
                 process.exit(1);
             }
 
-            console.log(' - ' + item.file + ' [' + mimeType + ']');
+            console.log(' + ' + item.file + ' [' + mimeType + ']');
         });
 
     // FIXME: Set cache control
