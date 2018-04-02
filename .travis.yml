@@ -8,14 +8,16 @@ services:
   - docker
 
 # TBD: Is it works?
-global:
-  - SPEC_AWS_ACCESS_KEY=AwsAccessKey
-  - SPEC_AWS_SECRET_KEY=AwsSecretKey
-  - SPEC_S3_REGION=us-east-1
-  - SPEC_S3_BUCKET=public
-  - SPEC_S3_ENDPOINT=127.0.0.1:9000
+env:
+  - |
+    SPEC_AWS_ACCESS_KEY=AwsAccessKey \
+    SPEC_AWS_SECRET_KEY=AwsSecretKey \
+    SPEC_S3_REGION=us-east-1 \
+    SPEC_S3_BUCKET=public \
+    SPEC_S3_ENDPOINT=127.0.0.1:9000
 
 before_install:
+  - echo "aaaa ${SPEC_S3_ENDPOINT}"
   - docker pull minio/minio:RELEASE.2018-03-30T00-38-44Z
   # TODO: Add public bucket policy from specs/minio/bucket/public/policy.json
   - docker run --name s3 -p ${SPEC_S3_ENDPOINT}:9000 -d minio/minio:RELEASE.2018-03-30T00-38-44Z server /data
