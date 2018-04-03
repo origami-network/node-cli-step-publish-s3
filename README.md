@@ -4,12 +4,19 @@
 # node-cli-step-publish-s3
 Publish artifacts to AWS S3 blob storage. Mainly used to allow access client side assets through CDN infrastructure.
 
-## Execute specification
+## Specification
+
+In order to execute living specification suite use the fallowing command.
 
 ```shell
 > npm --aws-access-key=<access key> --aws-secret-key=<secret key> --s3-region=<region> --s3-bucket=<bucket> --public-base-url=<bucket base url> run spec
 ```
-The S3 bucket should has at last read only policy for direct public access to the objects. 
 
-If the minio is used for test provide `--s3-endpoint=<minio endpoint>` parameter.
+The S3 bucket should has at last [read only policy](specs/s3/public/policy.json) for direct public access to the objects. 
+
+### Use Minio
+
+[Minio](https://minio.io/) is an object storage server compatible with Amazon S3 cloud storage service.
+
+In order to use it the parameter `--s3-endpoint=<minio endpoint>` need to be provided.
     
