@@ -22,7 +22,7 @@ before_install:
     docker run \
     --name s3 \
     -p ${SPEC_S3_ENDPOINT}:9000 \
-    -v "${TRAVIS_BUILD_DIR}/specs/s3/${SPEC_S3_BUCKET}/policy.json:/data/.minio.sys/buckets/${SPEC_S3_BUCKET}/policy.json"
+    -v "${TRAVIS_BUILD_DIR}/specs/s3/${SPEC_S3_BUCKET}/policy.json:/data/.minio.sys/buckets/${SPEC_S3_BUCKET}/policy.json" \
     -e "MINIO_ACCESS_KEY=${SPEC_AWS_ACCESS_KEY}" \
     -e "MINIO_SECRET_KEY=${SPEC_AWS_SECRET_KEY}" \
     -e "MINIO_REGION=${SPEC_S3_REGION}" \
