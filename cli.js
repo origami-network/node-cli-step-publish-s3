@@ -48,7 +48,7 @@ const sourcePackageFile = path.join(sourcePackageDir, 'package.json');
 const sourcePackage = require(sourcePackageFile);
 
 const prefix = [
-    program.s3PathPrefix,
+    program.s3KeyPrefix,
     sourcePackage.name,
     'v' + sourcePackage.version
 ]

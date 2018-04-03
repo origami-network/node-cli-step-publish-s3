@@ -7,5 +7,8 @@ module.exports = {
         region: process.env.npm_config_s3_region,
         bucket: process.env.npm_config_s3_bucket,
         endpoint: process.env.npm_config_s3_endpoint
+    },
+    public: {
+        baseUrl: process.env.npm_config_public_base_url
     }
 };
