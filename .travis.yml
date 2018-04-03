@@ -18,7 +18,8 @@ env:
 before_install:
   - docker pull minio/minio:RELEASE.2018-03-30T00-38-44Z
   # TODO: Add public bucket policy from specs/minio/bucket/public/policy.json
-  - echo "specs/s3/${SPEC_S3_BUCKET}/policy.json:/data/.minio.sys/buckets/${SPEC_S3_BUCKET}/policy.json"
+  - mkdir -p .s3-data/{${SPEC_S3_BUCKET},.minio.sys/buckets/${SPEC_S3_BUCKET}}
+  - cp specs/s3/${SPEC_S3_BUCKET}/policy.json .s3-data/.minio.sys/buckets/${SPEC_S3_BUCKET}
   - |
     docker run \
     --name s3 \
@@ -26,6 +27,7 @@ before_install:
     -e "MINIO_ACCESS_KEY=${SPEC_AWS_ACCESS_KEY}" \
     -e "MINIO_SECRET_KEY=${SPEC_AWS_SECRET_KEY}" \
     -e "MINIO_REGION=${SPEC_S3_REGION}" \
+    -v ".s3-data:/data:rw" \
     -d minio/minio:RELEASE.2018-03-30T00-38-44Z \
     server /data
 
@@ -47,4 +49,3 @@ script:
 after_script:
   - npm run test:cover:publish
   - docker logs s3
-  - docker exec s3 ls /root/.minio
