@@ -41,7 +41,7 @@ script:
     --s3-region="${SPEC_S3_REGION}" \
     --s3-bucket="${SPEC_S3_BUCKET}" \
     --s3-endpoint="http://${SPEC_S3_ENDPOINT}" \
-    --public-base-url="http://${SPEC_S3_ENDPOINT}/${SPEC_S3_BUCKET}"
+    --public-base-url="http://${SPEC_S3_ENDPOINT}/${SPEC_S3_BUCKET}" \
     run spec
 
 after_script:
