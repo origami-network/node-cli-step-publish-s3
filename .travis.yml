@@ -45,3 +45,4 @@ script:
 after_script:
   - npm run test:cover:publish
   - docker logs s3
+  - docker exec s3 ls /root/.minio
