@@ -38,17 +38,19 @@ The files will be placed with the prefix `<name>/v<version>`, where `<name>` and
 
 It is possible to store pass additional parameters to the script when calling `npm run`, by adding `--` and the arguments of the script:
 
-  * **`-A`**, **`--aws-access-key <value>`** - AWS access key that has privilege to put objects in bucket.
-  * **`-S`**, **`--aws-secret-key <value>`**, 'AWS secret key corresponding to access key.
-     > NOTE: Do not store AWS secret key in the repository. It should be defined in secure storge.
-  * **`-r`**, **`--s3-region <name>`** - 'S3 bucket region.
-  * **`-b`**, **`--s3-bucket <name>`** - 'S3 bucket name.
+ * **`-A`**, **`--aws-access-key <value>`** - AWS access key that has privilege to put objects in bucket.
+ * **`-S`**, **`--aws-secret-key <value>`**, 'AWS secret key corresponding to access key.
+
+   > NOTE: Do not store AWS secret key in the repository. It should be defined in secure storge.
+
+ * **`-r`**, **`--s3-region <name>`** - 'S3 bucket region.
+ * **`-b`**, **`--s3-bucket <name>`** - 'S3 bucket name.
 
 Optionaly fallowing arguments can be used:
 
-  * `-p`, `--s3-key-prefix <value>` - 'S3 bucket key prefix. Parameter is optional.
-  * `-s`, `--source <path>` - 'Path with files that should be published. It should be path relative to module. By default it is `./dist`.
-  * `-e`, `--s3-endpoint <url>` - 'URL to the S3 endpoint. Used for testing purposes with Minio server. Should be omited when working with AWS S3 services.  
+ * `-p`, `--s3-key-prefix <value>` - 'S3 bucket key prefix. Parameter is optional.
+ * `-s`, `--source <path>` - 'Path with files that should be published. It should be path relative to module. By default it is `./dist`.
+ * `-e`, `--s3-endpoint <url>` - 'URL to the S3 endpoint. Used for testing purposes with Minio server. Should be omited when working with AWS S3 services.  
 
 In addition, fallowing informational parameters can be used:
 
@@ -139,4 +141,3 @@ See [CI/CD file](./.travis.yml) for exeample usage.
 
  * Prepare publishing to NPM registry.
  * Allow to pass `Cache-Control` header value.
- 
