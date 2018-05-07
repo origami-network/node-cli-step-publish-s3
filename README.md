@@ -139,5 +139,4 @@ See [CI/CD file](./.travis.yml) for exeample usage.
 
 ## TODO
 
- * Prepare publishing to NPM registry.
  * Allow to pass `Cache-Control` header value.
