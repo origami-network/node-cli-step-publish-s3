@@ -1,0 +1,6 @@
+dist/
+specs/
+.*/
+
+*.spec.js
+.*

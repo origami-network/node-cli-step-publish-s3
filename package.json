@@ -2,6 +2,12 @@
   "name": "@origami-network/cli-step-publish-s3",
   "version": "0.0.0",
   "description": "Module that publish the folder to AWS S3 bucket.",
+  "keywords": [
+    "s3",
+    "publish",
+    "delivery",
+    "cli"
+  ],
   "main": "lib/get-files.js",
   "bin": {
     "cli-publish-s3": "./cli.js"
